@@ -1,88 +1,54 @@
-// import globals from "globals";
-// import pluginJs from "@eslint/js";
-// import tseslint from "typescript-eslint";
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import ts from '@typescript-eslint/eslint-plugin';
+import parser from '@typescript-eslint/parser';
+import prettier from 'eslint-config-prettier';
 
-// import js from "@eslint/js";
-// import ts from "@typescript-eslint/eslint-plugin";
-// import tsParser from "@typescript-eslint/parser";
-
-// export default [
-//   js.configs.recommended,
-//   pluginJs.configs.recommended,
-//   ...tseslint.configs.recommended,
-//   {
-//     files: ["*.ts", "*.tsx"],
-//     languageOptions: {
-//       parser: tsParser,
-//       globals: {
-//         ...globals.browser,
-//         process: "readonly",
-//       },
-//     },
-//     plugins: {
-//       "@typescript-eslint": ts,
-//     },
-//     rules: {
-//       ...ts.configs.recommended.rules,
-//     },
-//   },
-//   {
-//     files: ["*.js", "*.jsx", "*.ts", "*.tsx"],
-//     ignores: ["**/node_modules/", ".dist/"],
-//     languageOptions: {
-//       globals: {
-//         ...globals.browser,
-//         process: "readonly",
-//       },
-//     },
-//     plugins: {
-//       "@typescript-eslint": ts,
-//     },
-
-//     rules: {
-//       "no-unused-vars": "error",
-//       "no-undef": "error",
-//       "no-unused-expressions": "error",
-//       "prefer-const": "error",
-//       "no-console": "warn",
-//     },
-//   },
-// ];
-
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
-import ts from "@typescript-eslint/eslint-plugin";
+const jsRules = pluginJs.configs.recommended.rules;
+const tsRules = ts.configs.recommended.rules;
+const prettierRules = prettier.rules;
 
 export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    ignores: ["**/*.env/", "**/dist/", "**/node_modules/"],
+    ignores: ['**/*.env/', '**/dist/', '**/node_modules/'],
   },
   {
-    files: ["*.js", "*.jsx", "*.ts", "*.tsx"],
+    files: ['*.js', '*.jsx', '*.ts', '*.tsx'],
   },
+  // {
+  //   extends: [
+  //     'eslint:recommended',
+  //     'plugin:@typescript-eslint/recommended',
+  //     'prettier',
+  //   ],
+  // },
   {
     languageOptions: {
+      parser: parser,
       globals: {
         ...globals.browser,
-        process: "readonly",
+        process: 'readonly',
       },
     },
   },
   {
     plugins: {
-      "@typescript-eslint": ts,
+      '@typescript-eslint': ts,
     },
   },
   {
     rules: {
-      "no-unused-vars": "error",
-      "no-undef": "error",
-      "no-unused-expressions": "error",
-      "prefer-const": "error",
-      "no-console": "warn",
+      ...jsRules,
+      ...tsRules,
+      ...prettierRules,
+      'no-unused-vars': 'error',
+      'no-undef': 'error',
+      'no-unused-expressions': 'error',
+      'prefer-const': 'error',
+      'no-console': 'warn',
     },
   },
 ];
