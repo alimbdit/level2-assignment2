@@ -1,4 +1,4 @@
-import { Document, Schema, model } from 'mongoose';
+import { Document, Schema, Types, model } from 'mongoose';
 
 
 
@@ -6,7 +6,10 @@ import { Document, Schema, model } from 'mongoose';
 
 export type TOrder = {
     email: string;
-    productId: string;
+    productId: Types.ObjectId;
     price: number;
     quantity: number;
 }
+
+
+// export type StudentModel = Model<TOrder, Record<string, never>, StudentMethods>;
