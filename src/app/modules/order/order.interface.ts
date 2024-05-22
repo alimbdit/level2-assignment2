@@ -1,4 +1,4 @@
-import { Document, Schema, Types, model } from 'mongoose';
+import { Types } from 'mongoose';
 
 // order interface
 
