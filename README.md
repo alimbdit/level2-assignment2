@@ -30,11 +30,15 @@ To install the application, follow these steps:
 
 1. Clone the repository:
 
+```sh
    git clone https://github.com/alimbdit/level2-assignment2.git
+```
 
 2. Install dependencies:
 
+```sh
    npm install
+```
 
 ## Running the Application
 
@@ -43,15 +47,21 @@ To run the application locally, follow these steps:
 1. Ensure you are in the project directory.
 2. Compile the TypeScript code:
 
+```sh
    npm run build
+```
 
 3. Start the application:
 
+```sh
    npm run start:dev
+```
 
 4. Open your web browser and go to:
 
+```sh
    http://localhost:5000
+```
 
 ## Configuration
 
@@ -60,6 +70,9 @@ The application requires a configuration file to connect to the MongoDB database
 1. Create a .env file in the root directory.
 2. Add the following environment variables in the .env file:
 
-env
+### .env
+
+```sh
 PORT=5000
 DATABASE_URL="Add your connection string into your application code with username and password. After the / and before ? set repository name."
+```
