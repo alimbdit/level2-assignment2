@@ -26,15 +26,29 @@ const getAllProductsFromDB = async () => {
 const getSingleProductFromDB = async (id: string) => {
   // const result = await Product.findOne({ _id: id });
   const result = await Product.findById(id);
-  console.log(result, 'service');
+  // console.log(result, 'service');
   return result;
 };
+
+
+// & update a product
+const updateProductFromDB = async (id: string, updatedData: TProduct) => {
+  const result = await Product.findByIdAndUpdate(id, updatedData, {
+    new: true,
+    runValidators: true,
+  }).select('-_id');
+  // console.log(result, 'services');
+
+  return result;
+};
+
+
 
 // * delete a product
 const deleteProductFromDB = async (id: string) => {
   // const result = await Product.findOne({ _id: id });
   const result = await Product.deleteOne({ _id: id }, { isDeleted: true });
-  console.log(result, 'services');
+  // console.log(result, 'services');
 
   return result;
 };
@@ -43,5 +57,6 @@ export const ProductServices = {
   createProductIntoDB,
   getAllProductsFromDB,
   getSingleProductFromDB,
+  updateProductFromDB,
   deleteProductFromDB,
 };

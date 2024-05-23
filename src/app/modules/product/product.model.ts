@@ -111,6 +111,10 @@ productSchema.pre('find', async function (next) {
     console.log(this);
     next();
 });
+productSchema.pre('findOne', async function (next) {
+    console.log(this);
+    next();
+});
 
 //! creating a custom static method
 
