@@ -1,3 +1,4 @@
+import { query } from 'express';
 import { TProduct } from './product.interface';
 import { Product } from './product.model';
 
@@ -18,9 +19,16 @@ const createProductIntoDB = async (productData: TProduct) => {
 };
 
 const getAllProductsFromDB = async () => {
+
   const result = await Product.find();
   return result;
 };
+
+
+const getProductsByNameFromDB = async (name: string) => {
+  const result = await Product.find({ name: { $regex: name as string, $options: 'i' } }).select('-_id')
+  return result
+}
 
 // get product by id
 const getSingleProductFromDB = async (id: string) => {
@@ -59,4 +67,5 @@ export const ProductServices = {
   getSingleProductFromDB,
   updateProductFromDB,
   deleteProductFromDB,
+  getProductsByNameFromDB
 };

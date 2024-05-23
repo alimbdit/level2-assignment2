@@ -108,11 +108,11 @@ productSchema.post('save', function (doc, next) {
 
 //! query middleware
 productSchema.pre('find', async function (next) {
-    console.log(this);
+    // console.log(this);
     next();
 });
 productSchema.pre('findOne', async function (next) {
-    console.log(this);
+    // console.log(this);
     next();
 });
 
