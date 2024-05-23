@@ -29,7 +29,7 @@ export default [
     languageOptions: {
       parser: parser,
       globals: {
-        ...globals.browser,
+        ...globals.node,
         process: 'readonly',
       },
     },
@@ -44,11 +44,12 @@ export default [
       ...jsRules,
       ...tsRules,
       ...prettierRules,
-      'no-unused-vars': 'error',
+      'no-unused-vars': 'warn',
       'no-undef': 'error',
       'no-unused-expressions': 'error',
       'prefer-const': 'error',
       'no-console': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ];
